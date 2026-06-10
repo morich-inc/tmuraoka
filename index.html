@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>村岡哲志 様｜morich キャリアご提案</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --red: #E60012;
+    --red-light: #fff0f0;
+    --gray-50: #f9fafb;
+    --gray-100: #f3f4f6;
+    --gray-200: #e5e7eb;
+    --gray-500: #6b7280;
+    --gray-600: #4b5563;
+    --gray-700: #374151;
+    --gray-900: #111827;
+    --blue-50: #eff6ff;
+    --blue-100: #dbeafe;
+    --blue-600: #2563eb;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Noto Sans JP', sans-serif; background: #f5f5f5; color: var(--gray-900); line-height: 1.75; }
+  header { background: #fff; border-bottom: 3px solid var(--red); padding: 14px 24px; display: flex; align-items: center; gap: 16px; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 8px rgba(0,0,0,0.07); }
+  header img { height: 38px; }
+  header .htxt p:first-child { font-size: 12px; color: var(--gray-500); }
+  header .htxt p:last-child { font-size: 17px; font-weight: 900; }
+  .nav-bar { background: var(--gray-900); padding: 0 12px; overflow-x: auto; white-space: nowrap; }
+  .nav-bar a { display: inline-block; padding: 13px 18px; color: #ccc; text-decoration: none; font-size: 12px; font-weight: 700; border-bottom: 3px solid transparent; transition: all 0.2s; }
+  .nav-bar a:hover { color: #fff; border-bottom-color: var(--red); }
+  main { max-width: 860px; margin: 0 auto; padding: 28px 14px 64px; }
+  .card { background: #fff; border-radius: 12px; box-shadow: 0 2px 12px rgba(0,0,0,0.07); margin-bottom: 40px; overflow: hidden; border-top: 5px solid var(--red); }
+  .card-inner { padding: 28px 28px 36px; }
+  .badges { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 14px; }
+  .badge { font-size: 11px; font-weight: 700; padding: 3px 12px; border-radius: 999px; border: 2px solid var(--red); color: var(--red); background: var(--red-light); }
+  .badge-blue { border-color: var(--blue-600); color: var(--blue-600); background: var(--blue-50); }
+  .co-name { font-size: clamp(22px, 5vw, 34px); font-weight: 900; line-height: 1.2; margin-bottom: 5px; }
+  .co-url { font-size: 12px; margin-bottom: 22px; }
+  .co-url a { color: var(--blue-600); text-decoration: none; }
+  .co-url a:hover { text-decoration: underline; }
+  .overview { background: var(--blue-50); border: 1px solid var(--blue-100); border-radius: 8px; padding: 16px 20px; margin-bottom: 22px; }
+  .overview h3 { font-size: 10px; font-weight: 700; color: var(--blue-600); text-transform: uppercase; letter-spacing: .1em; margin-bottom: 10px; }
+  .overview table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .overview tr { border-bottom: 1px solid var(--blue-100); }
+  .overview tr:last-child { border-bottom: none; }
+  .overview th { text-align: left; padding: 6px 14px 6px 0; color: var(--gray-600); font-weight: 700; width: 100px; vertical-align: top; white-space: nowrap; }
+  .overview td { padding: 6px 0; color: var(--gray-700); }
+  .highlight { background: var(--red-light); border: 2px solid var(--red); border-radius: 8px; padding: 16px 20px; margin-bottom: 22px; }
+  .highlight h3 { font-size: 13px; font-weight: 900; color: var(--red); margin-bottom: 8px; }
+  .highlight p, .highlight li { font-size: 13px; color: #7a0000; margin-bottom: 4px; }
+  .highlight ul { padding-left: 16px; }
+  .accordion { margin-bottom: 16px; }
+  .acc-header { display: flex; align-items: flex-start; justify-content: space-between; cursor: pointer; padding: 12px 16px; background: var(--gray-50); border: 1px solid var(--gray-200); border-radius: 8px; user-select: none; transition: background 0.15s; }
+  .acc-header:hover { background: var(--gray-100); }
+  .acc-header .label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--red); border-left: 3px solid var(--red); padding-left: 8px; margin-bottom: 5px; display: block; }
+  .acc-preview { font-size: 12px; color: var(--gray-500); line-height: 1.6; }
+  .acc-header-left { flex: 1; }
+  .acc-icon { width: 28px; height: 28px; flex-shrink: 0; margin-left: 12px; margin-top: 2px; display: flex; align-items: center; justify-content: center; border-radius: 50%; background: var(--gray-200); font-size: 13px; transition: transform 0.25s, background 0.2s; }
+  .acc-header.open .acc-icon { transform: rotate(180deg); background: var(--red); color: #fff; }
+  .acc-header.open { border-bottom-left-radius: 0; border-bottom-right-radius: 0; border-bottom-color: transparent; }
+  .acc-body { display: none; padding: 20px 18px; border: 1px solid var(--gray-200); border-top: none; border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; font-size: 13px; color: var(--gray-700); line-height: 1.85; }
+  .acc-body.open { display: block; }
+  .acc-body p { margin-bottom: 10px; }
+  .acc-body ul { padding-left: 18px; margin-bottom: 10px; }
+  .acc-body li { margin-bottom: 6px; }
+  .job-wrap { border: 1px solid var(--gray-200); border-radius: 8px; overflow: hidden; margin-bottom: 16px; }
+  .job-header { background: var(--gray-900); color: #fff; padding: 14px 18px; display: flex; align-items: flex-start; justify-content: space-between; cursor: pointer; user-select: none; }
+  .job-title-text { font-size: 14px; font-weight: 900; margin-bottom: 3px; }
+  .job-preview { font-size: 11px; color: #aaa; line-height: 1.5; }
+  .job-icon { width: 26px; height: 26px; flex-shrink: 0; margin-left: 12px; margin-top: 2px; display: flex; align-items: center; justify-content: center; border-radius: 50%; background: rgba(255,255,255,0.15); font-size: 12px; transition: transform 0.25s; }
+  .job-header.open .job-icon { transform: rotate(180deg); }
+  .job-body { display: none; padding: 20px 18px; font-size: 13px; color: var(--gray-700); line-height: 1.85; }
+  .job-body.open { display: block; }
+  .job-body p { margin-bottom: 10px; }
+  .job-body ul { padding-left: 18px; margin-bottom: 10px; }
+  .job-body li { margin-bottom: 6px; }
+  .job-section { font-size: 11px; font-weight: 700; color: var(--red); text-transform: uppercase; letter-spacing: .06em; margin: 14px 0 6px; }
+  .tag { display: inline-block; font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 4px; margin-right: 5px; margin-bottom: 8px; }
+  .tag-must { background: var(--red); color: #fff; }
+  .tag-want { background: var(--gray-600); color: #fff; }
+  .meta-pills { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 14px; }
+  .pill { font-size: 12px; font-weight: 700; padding: 4px 11px; border-radius: 999px; background: var(--gray-100); color: var(--gray-700); border: 1px solid var(--gray-200); }
+  .section-label { font-size: 11px; font-weight: 700; color: var(--gray-500); text-transform: uppercase; letter-spacing: .08em; border-left: 3px solid var(--red); padding-left: 8px; margin: 22px 0 10px; }
+  .links { display: flex; flex-wrap: wrap; gap: 8px; }
+  .lbtn { display: inline-flex; align-items: center; gap: 5px; padding: 7px 14px; border-radius: 6px; background: var(--gray-900); color: #fff; font-size: 12px; font-weight: 700; text-decoration: none; transition: background 0.2s; }
+  .lbtn:hover { background: var(--red); }
+  .lbtn-out { background: transparent; color: var(--gray-900); border: 2px solid var(--gray-200); }
+  .lbtn-out:hover { background: var(--gray-900); color: #fff; border-color: var(--gray-900); }
+  footer { text-align: center; padding: 28px 16px; font-size: 11px; color: var(--gray-500); border-top: 1px solid var(--gray-200); background: #fff; }
+  @media(max-width:600px){ .card-inner{ padding: 18px 14px 24px; } .overview th { width: 80px; } }
+</style>
+</head>
+<body>
+<header>
+  <img src="morich_logo.jpg" alt="morich">
+  <div class="htxt">
+    <p>morich キャリアご提案資料</p>
+    <p>村岡哲志 様</p>
+  </div>
+</header>
+<nav class="nav-bar">
+  <a href="#k1">1. 株式会社ログラス</a>
+  <a href="#k2">2. 株式会社XAION DATA</a>
+  <a href="#k3">3. シンプルフォーム株式会社</a>
+  <a href="#k4">4. 株式会社CINC</a>
+</nav>
+<main>
+
+<div class="card" id="k1"><div class="card-inner">
+  <div class="badges"><span class="badge">カスタマーサクセス</span><span class="badge badge-blue">未上場</span></div>
+  <div class="co-name">株式会社ログラス</div>
+  <div class="co-url"><a href="https://www.loglass.co.jp/" target="_blank">https://www.loglass.co.jp/</a></div>
+  <div class="overview">
+    <h3>Corporate Overview</h3>
+    <table><tr><th>本社住所</th><td>〒108-0073 東京都港区三田3-11-24　国際興業三田第2ビル 9階</td></tr><tr><th>上場区分</th><td>未上場</td></tr></table>
+  </div>
+  <div class="highlight">
+    <h3>⭐ morichオススメPoint</h3>
+    <ul><li>IPO準備中</li><li>2019年創業、2022年にシリーズA資金調達済、現在はシリーズB資金調達に向けて動いている同社。既に従業員は160名となり、急成長中です。</li><li>CEO布川様が投資銀行→事業会社での経営企画を経験されていること、共同創業者の取締役CTO坂本様が公認会計士を目指していたバックグラウンドもあり、経営陣が経営管理領域のペインを理解した上で起業されています。</li><li>管理会計のERP導入は海外で9割進んでいる中、日本では表計算ソフト利用が圧倒的な状況で、システム化が進んでいない最後の領域と言えます。</li><li>経営企画・管理会計領域から派生して、人事領域（人員計画・人件費の予実管理等）、営業・マーケティング領域（広告宣伝費、営業予実管理等）のサービスもローンチ。経営管理のアウトソーシングサービスも提供開始されています。</li></ul>
+  </div>
+  <div class="accordion">
+    <div class="acc-header" onclick="toggleAcc(this)">
+      <div class="acc-header-left">
+        <span class="label">企業紹介</span>
+        <div class="acc-preview">「良い景気を作ろう。」をミッションとして掲げ、新しいデータ経営の在り方を生み出すDXサービスを提供しています。主なサービスとして、「Loglass 経営管理」「Loglass IT投資管理」「Loglass 販売計画」「Loglass 人員計画」「Loglass サクセスパートナー」を提供...</div>
+      </div>
+      <div class="acc-icon">▼</div>
+    </div>
+    <div class="acc-body"><p>「良い景気を作ろう。」をミッションとして掲げ、新しいデータ経営の在り方を生み出すDXサービスを提供しています。主なサービスとして、「Loglass 経営管理」「Loglass IT投資管理」「Loglass 販売計画」「Loglass 人員計画」「Loglass サクセスパートナー」を提供、マルチプロダクト展開を推進しています。</p><p>基幹プロダクトである「Loglass 経営管理」は、企業の中に散在する経営データ（財務数値／KPIの予算・見込・実績）の収集・統合・一元管理までを効率化し、高度な分析を可能にするクラウド経営管理システムで、経営判断の精度やスピードを高めるものです。KDDI・味の素・エムスリーといった東証プライム上場企業をはじめとした多くの企業に導入されています。</p><p>2019年に創業し、インキュベイトファンド主催の日本有数のピッチコンテストにて450社の中から優勝するなど、日本経済新聞、Forbesをはじめとするメディアから異例の形で取材を受けるなど、シードスタートアップ時から注目されており、事業規模はどんどん拡大、現在160名を超える組織に成長しています。</p><p>2024年にはシリーズBで70億円の資金調達を実現。データとAIの力で、&quot;良い景気&quot;を実現するために、事業成長を加速させています。</p></div>
+  </div>
+  
+    <div class="job-wrap">
+      <div class="job-header" onclick="toggleJob(this)">
+        <div>
+          <div class="job-title-text">📋 【新規事業開発】カスタマーサクセス／メンバー</div>
+          <div class="job-preview">新規事業の1人目カスタマーサクセスとして、カスタマーサクセス戦略の設計と実行を担当</div>
+        </div>
+        <div class="job-icon">▼</div>
+      </div>
+      <div class="job-body">
+        <p><strong>■プロダクト概要</strong><br>「Loglass 経営管理」は、企業の中に散在する経営データ（財務数値／KPIの予算・見込・実績）の収集・統合・一元管理までを効率化し、高度な分析を可能にするクラウド経営管理システムです。</p><p>「Loglass 経営管理」を2020年から提供開始した後、2023年からはマルチプロダクト展開にも注力し、計5つのプロダクト／サービスを提供するまでに至りました。 また、プロダクトビジョンである「MAKE NEW DIRECTION」の実現に向け、今後はデータとAIの活用を推進し、経営リソースの最適配分を意思決定できる、真のプランニング・プラットフォームを目指します。</p><p><strong>■募集ポジションについて</strong><br>その中でも我々の発部門ではセールス領域において「良い景気を作ろう。」を達成するための新規事業の立ち上げを行なっております。すでに大手クライアントにおける導入が複数進んでおり、それらのクライアントのサクセスのために、1人目カスタマーサクセスとしてご活躍いただける方を募集しております。</p><p><strong>■具体的な業務内容・ミッション</strong></p><ul><li>カスタマーサクセス戦略の設計と実行<br>・顧客を成功に導くためのサクセスプラン（オンボーディング、活用促進、定着支援）の全体像を設計<br>・顧客の状態を可視化するヘルススコアを定義し、データに基づいたプロアクティブな支援体制を構築</li><li>オンボーディングと活用促進<br>・導入顧客がプロダクトの価値を最速で実感できるよう、導入支援プロセスを確立し、自ら実行<br>・定期的なミーティングや勉強会を通じて、顧客のビジネスに合わせたプロダクトの活用方法を提案</li><li>顧客とのエンゲージメント強化<br>・顧客の成功事例を創出し、他顧客へ展開することで、サービス全体の価値を向上<br>・ユーザーコミュニティの企画・運営などを通じて、顧客ロイヤリティを高める施策を立案・実行</li><li>プロダクトの成長を牽引するフィードバックループの構築<br>・顧客からの要望や利用データを収集・分析し、開発チームへ的確にフィードバック<br>・プロダクトロードマップの策定に深く関与し、「顧客にとって本当に価値あるプロダクト」への進化をリード</li><li>サクセス活動の仕組み化<br>・FAQ、チュートリアル、活用Tipsなどのサポートコンテンツを作成し、顧客が自己解決できる環境を整備<br>・将来のチーム拡大を見据え、再現性のあるカスタマーサクセスの業務プロセス（プレイブック）を構築</li></ul><p><strong>応募資格</strong></p><p><span class='tag tag-must'>MUST</span></p><ul><li>カスタマーサクセス・アカウントマネージャーなどでの法人顧客との折衝経験 3年以上</li></ul><p><span class='tag tag-want'>WANT</span></p><ul><li>以下いずれかの経験があると、なおよし<br>・ソリューション営業経験<br>・カスタマーサクセス部門の立ち上げ、または仕組み化（テックタッチの導入など）に携わった経験<br>・ヘルススコアの設計やデータ分析に基づいた顧客支援の経験<br>・ユーザーコミュニティの立ち上げや運営経験<br>・FAQやマニュアル、動画などのコンテンツ作成経験<br>・CRM / SFA領域でのご経験<br>・AI / LLMプロダクトの販売経験・立ち上げ経験</li></ul><p><strong>求める人物像</strong></p><ul><li>高い論理的思考力をお持ちで、本質的なイシュー設定が得意な方</li><li>短期間で必要な知識とスキルをアップデートする学習意欲をお持ちの方</li><li>強く意識に残る挫折や成功体験をお持ちの方</li><li>弊社が定義するバリューに共感いただける方</li><li>不確実性の高い環境を楽しみ、主体的に行動できるマインドをお持ちの方</li><li>高いITリテラシー、またはセールス領域の業務に対する深い理解をお持ちの方</li></ul>
+        <div class="meta-pills"><span class="pill">📍 東京</span><span class="pill">🏠 ハイブリッド勤務</span><span class="pill">✅ 副業可</span></div>
+      </div>
+    </div>
+  <div class="section-label">外部リンク</div>
+  <div class="links"><a class="lbtn" href="https://www.loglass.co.jp/" target="_blank">🏢 企業サイト</a></div>
+</div></div>
+
+<div class="card" id="k2"><div class="card-inner">
+  <div class="badges"><span class="badge">事業開発</span><span class="badge badge-blue">未上場</span></div>
+  <div class="co-name">株式会社XAION DATA</div>
+  <div class="co-url"><a href="https://xaiondata.co.jp/" target="_blank">https://xaiondata.co.jp/</a></div>
+  <div class="overview">
+    <h3>Corporate Overview</h3>
+    <table><tr><th>本社住所</th><td>〒151-0051 東京都渋谷区千駄ヶ谷5-27-5 WeWork リンクスクエア新宿 16F</td></tr><tr><th>上場区分</th><td>未上場</td></tr></table>
+  </div>
+  <div class="highlight">
+    <h3>⭐ morichオススメPoint</h3>
+    <ul><li>IPO準備中</li><li>役員リレーション</li><li>「AI×DATAで世界中の価値を最大化する」をミッションにAI×DATAを技術基盤とし、データの構造化・統合AI技術（特許取得済み）の研究開発及び、HR領域・セールス領域等の事業領域でAIのデータ活用ソリューション・サービスを提供するシリーズAスタートアップです！</li><li>圧倒的な量のオープンデータを活用した採用支援・営業支援を行っており、2024年に厚生労働省によって創設された「優良募集情報等提供事業者認定制度」の国内初で唯一の認定事業者（４号）となり、同社のプロダクトの信頼性が非常に高いです。</li><li>オリジナリティ溢れるバックグラウンドのメンバーが多く、外国籍のメンバーもおり、日本の感覚を持ちつつ多様性に溢れた価値観が共存したチームとなっています。</li></ul>
+  </div>
+  <div class="accordion">
+    <div class="acc-header" onclick="toggleAcc(this)">
+      <div class="acc-header-left">
+        <span class="label">企業紹介</span>
+        <div class="acc-preview">米国シリコンバレーのAIベンチャー企業で本社COOと同社グローバルCTOを務めた日本人2名が日本で創業したITスタートアップです。「AI×DATAで世界中の価値を最大化する」というミッションのもと、オープンデータを活用した採用・営業支援プロダクトを展開しています。</div>
+      </div>
+      <div class="acc-icon">▼</div>
+    </div>
+    <div class="acc-body"><p>米国シリコンバレーのAIベンチャー企業で本社COOと同社グローバルCTOを務めた日本人2名が日本で創業したITスタートアップです。「AI×DATAで世界中の価値を最大化する」というミッションのもと、オープンデータを活用した採用・営業支援プロダクトを展開しています。</p><p>主要なサービスには、人材や企業情報をはじめとしたさまざまな公開情報をもとに、優秀な人材を横断して検索できる、業界最大級の非登録型採用プラットフォーム「AUTOHUNT（オートハント）」や、ウェブ上のオープンなSNSやメディアに掲載された人材および企業の情報を収集・統合し、膨大な情報の中から横断的に企業・キーパーソン検索が可能なAIセールスプラットフォーム「AUTOBOOST」などがあります。</p><p>また、企業が保有するデータを活用したAI/Data Solution事業等、多角的に事業を展開しています。「AUTOHUNT」は大手企業からスタートアップ企業まで、200社を超える実績があります。</p><p>2024年4月25日にシリーズA資金調達の実施し、現在までのデッドファイナンスを含めた累計調達額は4.5億円に達しています。</p><p><strong>代表取締役CEO 佐藤 泰秀氏</strong><br>1993年生まれ。仙台高等専門学校卒。2014年日立製作所に入社し、公共システム部門において大規模基幹系システムの導入・構築プロジェクトをPLとして対応。大規模システム更改プロジェクトにおいては、事業所技術賞を受賞。その後、アメリカ・シリコンバレーのAIスタートアップ企業にジョインし、アメリカにて市場開拓やファイナンス関連の業務に従事。アメリカ・日本市場開拓責任者を担い、日本の東証一部上場のHR企業のCVCから調達を実施。本社COOを経て、日本子会社設立および、同社代表取締役に就任。2020年1月、XAION DATAを共同創業。</p></div>
+  </div>
+  
+    <div class="job-wrap">
+      <div class="job-header" onclick="toggleJob(this)">
+        <div>
+          <div class="job-title-text">📋 事業開発【AUTOBOOST事業本部】</div>
+          <div class="job-preview">SalesTech領域にて新規事業や0➔1で事業立ち上げを主導する事業開発ポジション</div>
+        </div>
+        <div class="job-icon">▼</div>
+      </div>
+      <div class="job-body">
+        <p><strong>▍業務内容</strong></p><p><em>SalesTech領域にて新規事業や0➔1で事業立ち上げをしていただきます！</em></p><ul><li>ターゲットアカウント戦略（ABM）を設計し、導入・定着・拡大を主導</li><li>顧客データや営業活動データの収集・計測・分析を通じた売上最大化に繋がるエッセンスの特定</li><li>立ち上げ期のカオスを整理し、再現性のある販売・運用プロセスの構築</li><li>受注後のアップセル/クロスセル/チャーンマネジメントの戦略策定及び実行</li><li>上記戦略策定やチームマネジメントのみならず、自らフロントに立ちフィールドセールスとして営業活動</li><li>初期ターゲットへのアプローチから課題抽出、PoC（概念実証）の設計・提案</li><li>クライアントワークから得たリアルな課題を抽出・構造化</li><li>ユーザーインサイトをベースとしたプロダクト開発へのフィードバック</li><li>クライアントから得たリアルな課題（VOC）を構造化し、エンジニアチームと連携して機能要件へ落とし込み</li></ul><p><strong>▍この仕事の魅力／得られるやりがい</strong></p><p><em>1. 経営者の視座で「事業が生まれる瞬間」をリードできる</em><br>単なるイチ担当者ではなく、事業部長の「思考のパートナー」として動きます。戦略が形になり、市場に突き刺さるまでの全プロセスを最前列で体験できるのは、このポジションだけの特権です。「自分で事業を動かしている」という圧倒的な当事者意識を持って、手触り感のあるビジネスを構築できます。</p><p><em>2. 「セールス」と「プロダクト開発」における、ハイブリッドな成長</em><br>顧客の課題（VOC）を拾い、エンジニアと議論してプロダクトの機能へと昇華させる。この「Biz（ビジネス）」と「Dev（開発）」の架け橋となる経験は、将来の事業責任者や企業経営などに不可欠な力を飛躍的に高めます。</p><p><em>3. 生成AI×垂直立ち上げという、キャリアにおいてインパクトのある経験</em><br>現在、最も注目されている生成AI領域にて、オープンデータを活用したSalesTechにおける新フェーズ立ち上げに携わった実績は、市場価値を決定づける強力な武器になります。「AIをどうビジネスに落とし込み、利益を生むか」という問いへの解を自ら導き出す経験は、他では得がたい財産になるはずです。</p><p><strong>応募資格</strong></p><ul><li>弊社Missionへの共感や、Valueを体現できる方</li><li>従業員数100名以下のスタートアップ・ベンチャー企業における就業経験</li><li>IT/SaaS領域におけるB2B営業経験（3年以上）<br>→顧客の深い経営課題を特定し、無形商材を提案してきた経験</li><li>「0→1」または「1→10」の事業推進経験<br>→新規事業の立ち上げ・グロースに主体的に関わった経験</li></ul>
+        <div class="meta-pills"><span class="pill">🏠 ハイブリッド勤務</span><span class="pill">✅ 副業可（条件によって）</span></div>
+      </div>
+    </div>
+  <div class="section-label">外部リンク</div>
+  <div class="links"><a class="lbtn" href="https://xaiondata.co.jp/" target="_blank">🏢 企業サイト</a></div>
+</div></div>
+
+<div class="card" id="k3"><div class="card-inner">
+  <div class="badges"><span class="badge">セールス/CS</span><span class="badge badge-blue">未上場</span></div>
+  <div class="co-name">シンプルフォーム株式会社</div>
+  <div class="co-url"><a href="https://www.simpleform.co.jp/" target="_blank">https://www.simpleform.co.jp/</a></div>
+  <div class="overview">
+    <h3>Corporate Overview</h3>
+    <table><tr><th>本社住所</th><td>〒153-0044　東京都目黒区大橋一丁目5番1号 クロスエアタワー8F</td></tr><tr><th>上場区分</th><td>未上場</td></tr></table>
+  </div>
+  <div class="highlight">
+    <h3>⭐ morichオススメPoint</h3>
+    
+  </div>
+  <div class="accordion">
+    <div class="acc-header" onclick="toggleAcc(this)">
+      <div class="acc-header-left">
+        <span class="label">企業紹介</span>
+        <div class="acc-preview">「すべての法人がフェアに繋がれる世界の実現」をミッションに、法人取引における審査業務の革新に取り組む企業です。国内500万法人の定性情報を収集・データベース化し、この情報を基盤に法人調査プロセスを自動化する『SimpleCheck』や...</div>
+      </div>
+      <div class="acc-icon">▼</div>
+    </div>
+    <div class="acc-body"><p>「すべての法人がフェアに繋がれる世界の実現」をミッションに、法人取引における審査業務の革新に取り組む企業です。</p><p>国内500万法人の定性情報を収集・データベース化し、この情報を基盤に法人調査プロセスを自動化する『SimpleCheck』や、法人のリスク情報の重要な変化をモニタリングする『SimpleMonitor』などを開発。法人名を入力するだけで、世の中の関連情報を瞬時に収集し、独自に蓄積・検知したリスク情報とともに約30秒でレポートを返す仕組みを提供しています。顧客の業務フローに応じた柔軟なカスタマイズにより、煩雑で時間のかかる調査業務を効率化し、審査・コンプライアンス体制の高度化に貢献しています。</p><p>また、法人取引における審査体制の構築・運用支援などのプロフェッショナルサービスも展開。金融犯罪防止や業務生産性の向上を支援する同社のソリューションは、金融機関やカード会社など幅広い業界で採用されています。</p><p><strong>導入実績抜粋</strong><br>みずほ銀行様：https://www.simpleform.co.jp/solution/case-study/qOzkYn3a<br>ゆうちょ銀行様：https://www.simpleform.co.jp/news/fZlg6FxM<br>バトンズ様：https://www.simpleform.co.jp/solution/case-study/WSamEkzU</p><p>2024年11月にはシリーズBラウンドで総額40億円を調達し、事業拡大を加速中です。</p><p><strong>代表取締役CEO 田代翔太氏</strong><br>1988年生まれ。早稲田大学政治経済学卒業。株式会社日本政策投資銀行でファンドの管理、関連会社における国内外への投資業務を経て、行内の新規事業開発に従事。2020年10月にシンプルフォーム株式会社を創業。</p></div>
+  </div>
+  
+    <div class="job-wrap">
+      <div class="job-header" onclick="toggleJob(this)">
+        <div>
+          <div class="job-title-text">📋 【Biz】オープンポジション（Sales/CS）</div>
+          <div class="job-preview">エンタープライズ向けセールスとして、法人審査ソリューションの事業開発を担当</div>
+        </div>
+        <div class="job-icon">▼</div>
+      </div>
+      <div class="job-body">
+        <p>シンプルフォーム株式会社は、「全ての法人がフェアに繋がれる世界の実現」をミッションに掲げ、法人取引における審査業務の革新に取り組んでいます。</p><p>国内500万法人の定性情報を収集しデータベース化して、この情報を基盤とした法人調査プロセスを自動化する『SimpleCheck』と、法人のリスク情報の重要な変化をモニタリングする『SimpleMonitor』などのプロダクトを開発しています。法人取引における審査体制の構築・運用支援を行うプロフェッショナルサービスをはじめ、金融犯罪防止や業務生産性の向上を支援するプロダクトは金融機関やカード会社などで採用されています。</p><p>これまで主に金融機関向けにサービスを展開しておりましたが、デジタル社会において、審査の重要性は様々な業界で高まっています。犯罪組織による求人広告掲載（通称闇バイト）問題や、補助金不正受給問題、悪質なM&A仲介業者による不正取引問題を止めるには、取引をすべき正しい法人かを審査する必要があります。これは反社チェックでは不十分であり、私たちは、このためのデータベースを一から作り、審査ソリューションを開発しています。</p><p>創業5期目を迎えておりますが、メガバンク様をはじめとした金融機関に深く入り込むこみ、6期以降を見据え、新市場の開拓を推進していく想定です。</p><p>初回面談から導入支援、審査基準・審査業務構築支援を行いながら、アップセル・クロスセルを含め継続的な高単価獲得を目指すSalesポジションを募集しています。</p><p>弊社にご興味を持ってくださったものの、Sales職の中で適したポジション・ドメインが見つからないという方はオープンポジションとしてご応募ください。</p><p><strong>【募集ポジション】</strong><br>エンタープライズ向けセールスに取り組んでいただきます。業界別のチーム編成を行っており、計4つのチームに分かれています。①銀行向けチーム、②Payment・決済向けチーム、③中央省庁・自治体向けチーム、④非金融チーム(M&Aや人材など)</p><p>ご志向性やこれまでのご経験、適性に応じて各ポジションをご選択のうえ選考に進んでいただく予定です。ジュニアからミドル層の方を想定し、これまでのSales経験を活かし、キャリアを深め、拡げていかれたい方を募集しています。</p><p>シンプルフォームのSales職は、いずれも事業開発の役割を担う点が共通しています。ここでの「事業開発」とは、単なる販売活動にとどまらず、顧客との継続的なディスカッションを通じ「審査」への期待を作り出すことや、顧客起点のアイディアをプロダクトに反映させる取り組みを指します。</p><p>金融機関を中心にプロダクトの認知は広まりつつありますが、社会全体に対して審査の重要性や必要性をより一層浸透させていく必要があります。そのため、単にプロダクトを提案するのではなく、「なぜ審査が必要なのか」「それによって何が実現できるのか」といった問いを顧客と共に掘り下げ、明確化していくことが求められます。顧客の取引全体を支える存在になるためには、業務に入り込み利用範囲を広げることや他部署への展開も必要なため、プロダクト導入後もカスタマーサクセスと連携しながら継続的に顧客と対話し、ニーズや課題を引き出していくRMを担っていただきます。</p><p>また、審査の専門家として、審査業務のプロセス設計や審査基準の構築といったコンサルティングサービスも提供しています。さらに、顧客からのフィードバックをプロダクトに反映させるといった、プロダクト企画にも関与していただきます。</p><p>業界ごとに審査への理解度や予算規模は異なりますが、勝ち筋（市場ニーズとプロダクト・サービスの一致）を見出した後は、成功事例の横展開といったSalesの仕組み化やチームアップを通じて事業のスケールを図るといった役割を担っていただく可能性もあります。</p><p>これら一連の活動を通じて、すべての商取引における審査の在り方そのものを変革していきます。</p><p><strong>応募資格</strong></p><p><span class='tag tag-must'>必須スキル</span><br>下記いずれかの経験があること</p><ul><li>エンタープライズ向けセールスの経験3年以上</li><li>顧客への提案書やAsIs/ToBeの業務フローなどを、ドキュメント・PPTに落とし込むアウトプット能力</li><li>導入による費用対効果の検証とROI策定、KPI・アクションプランの策定・実行を推進する高い業務遂行能力</li></ul><p><span class='tag tag-want'>歓迎スキル</span></p><ul><li>自社プロダクトをスケールさせた経験</li><li>様々な産業に属する企業の事業分析経験</li><li>SQL・データ分析に関する基礎知識</li><li>エンジニアリングに関する基礎知識</li></ul><p><strong>求める人物像</strong></p><ul><li>私たちが大事にする「面倒を愛する」という価値観に共感いただける方</li><li>伝統的なシステムや業界構造を理解し、顧客特有の事情に寄り添うことができる方</li><li>社会に存在している負＝面倒で手を付けられていないことの解決に関心があり、その解決にワクワクされる方</li><li>金融機関など大企業の現場業務の効率化や変革に関心がある方</li><li>謙虚さを忘れず、また主体的な思想で働ける方</li></ul>
+        <div class="meta-pills"><span class="pill">📍 東京</span><span class="pill">🏠 ハイブリッド勤務</span></div>
+      </div>
+    </div>
+  <div class="section-label">外部リンク</div>
+  <div class="links"><a class="lbtn" href="https://www.simpleform.co.jp/" target="_blank">🏢 企業サイト</a></div>
+</div></div>
+
+<div class="card" id="k4"><div class="card-inner">
+  <div class="badges"><span class="badge">ソリューション営業×事業開発</span><span class="badge badge-blue">東証グロース</span></div>
+  <div class="co-name">株式会社CINC</div>
+  <div class="co-url"><a href="https://www.cinc-j.co.jp/about/" target="_blank">https://www.cinc-j.co.jp/about/</a></div>
+  <div class="overview">
+    <h3>Corporate Overview</h3>
+    <table><tr><th>本社住所</th><td>〒105-0001 東京都港区虎ノ門1丁目21-19 東急虎ノ門ビル6F</td></tr><tr><th>上場区分</th><td>東証グロース</td></tr></table>
+  </div>
+  <div class="highlight">
+    <h3>⭐ morichオススメPoint</h3>
+    <p>2021年10月に上場し、社員数は140名超。今後、2倍、3倍、5倍にしていく構想がありますが、マネジメントの不足感が組織課題として挙がってきており、今回幹部候補となる人材を求めています。社長・経営陣が素晴らしく、人間力溢れるの皆さんです。組織作り・人材育成を何より大事にされています。</p>
+  </div>
+  <div class="accordion">
+    <div class="acc-header" onclick="toggleAcc(this)">
+      <div class="acc-header-left">
+        <span class="label">企業紹介</span>
+        <div class="acc-preview">「マーケティングソリューションで日本を代表する会社を創る」をビジョンに掲げ、ビッグデータの活用を強みとしたWebマーケティングのツール開発からマーケティングコンサルティングを展開しています。独自のデータ収集技術で取得したビッグデータを、機械学習・AIを用いて確かな情報に変え...</div>
+      </div>
+      <div class="acc-icon">▼</div>
+    </div>
+    <div class="acc-body"><p>「マーケティングソリューションで日本を代表する会社を創る」をビジョンに掲げ、ビッグデータの活用を強みとしたWebマーケティングのツール開発からマーケティングコンサルティングを展開しています。独自のデータ収集技術で取得したビッグデータを、機械学習・AIを用いて確かな情報に変え、デジタルマーケティングの調査・分析ツールとコンサルティングサービスを提供しています。</p><p>主に以下2つの事業をメインとして運営しています。</p><p><strong>■ソリューション事業</strong><br>ソリューション事業では、自然言語処理や機械学習、深層学習などを活用したプロダクト開発、ビックデータソリューションに取り組んでいます。その他、独自のビックデータによるマーケティングソリューションも提供。企業が高品質かつ効率的なマーケティング活動を行えるようにサポートしています。</p><p><strong>■アナリティクス事業</strong><br>アナリティクス事業では、デジタルマーケティングを中心にマーケティングのコンサルティングを実施。ビックデータ分析をはじめ、テキストマイニングやアクセス分析、市場調査などにより、企業のマーケティング課題の解決に尽力しています。</p><p>X（twitter）のAPI仕様変更により、既存サービスKeywordmap for SNS のサービス縮小などがありましたが、既存顧客からのアップセル増加、営業体制の見直し、また他事業による業績UPによりカバー。今後は新規事業であるM＆A仲介業であったり、またAIを活用した新規ビジネスの仕掛けなども進めています。</p><p><strong>代表取締役社長 石松 友典氏</strong><br>1980年生まれ。2004年 麗澤大学卒業後、ソシエテジェネラル証券、JPモルガン証券、株式会社Speee等を経て、2014年に株式会社core（現・株式会社CINC）を創業。2021年10月に東証マザーズに株式上場。</p></div>
+  </div>
+  
+    <div class="job-wrap">
+      <div class="job-header" onclick="toggleJob(this)">
+        <div>
+          <div class="job-title-text">📋 【ソリューション営業×事業開発】顧客課題を起点に市場とプロダクトを創る｜AI時代の新市場を切り拓くBizDev</div>
+          <div class="job-preview">AI検索最適化領域でNo.1を目指し、顧客課題を起点に市場とプロダクトを創造する事業開発ポジション</div>
+        </div>
+        <div class="job-icon">▼</div>
+      </div>
+      <div class="job-body">
+        <p><strong>## 目指す姿</strong></p><p>私たちは、AI検索最適化領域でNo.1となることを目指しています。AIサービスの進化と普及により、ユーザーの検索や情報取得、さらには購買行動のプロセスが大きく変化し、企業は「AI時代の顧客行動」に対応した新たなマーケティング戦略を求められるようになっています。</p><p>私たちはこれまで、SEOを通じて企業とユーザーの情報流通を最適化してきました。生成AIによってクエリがプロンプトに、検索結果が回答テキストに変わっても、「人がどんな意図で情報を求め、どんな応答を得るか」を設計するという本質は変わりません。この領域は、私たちが長年培ってきた知見がそのまま活きる領域です。だからこそ、私たちは現在、このAI検索最適化領域でNo.1を実現するために、組織・アセット・リソースのすべてを集中させ、オールインしています。</p><p>ただし、AI検索最適化はSEOの延長線上にあるものではありません。なぜなら、AIは自社サイトや広告といった一次情報だけでなく、SNS・ニュース・口コミ・PRなどのサードパーティー情報も参照しながら回答を生成するため、企業はこの全体を最適化する必要があるからです。私たちは、こうした情報接点全体を最適化するサービス・ケイパビリティを今後さらに強化していきます。</p><p><strong>## 採用背景</strong></p><p>目指す姿で記載した通り、CINCはAI検索最適化領域におけるNo.1企業を目指しています。その実現に向けて、「Keywordmap」のAI検索最適化対応に加え、「AI SearchMap」をリリースし、AI時代のマーケティングを支援するプロダクト群を展開してきました。</p><p>今後は、これらの技術基盤やノウハウを活かし、<br>・デジタルマーケティング支援会社向けプロダクト<br>・ミッドサイズ〜エンタープライズ向けプロダクト<br>・SMB向けプロダクト<br>など、新たな市場に向けた複数のプロダクト展開を進めていきます。</p><p>しかし、この市場にはまだ明確な正解がありません。だからこそ重要なのは、顧客の声を深く理解し、その課題を解決する価値をいち早く形にすること。私たちは顧客理解を起点に市場とプロダクトを進化させながら、AI検索最適化領域のスタンダードを創ろうとしています。</p><p>そこで今回募集するのが、各プロダクト・各市場の成長を担うソリューション営業×事業開発の両面を担うポジションです。</p><p>顧客と向き合いながら市場ニーズを発見し、プロダクトの成長と事業成長の両方を推進していただくことを期待しています。</p><p><strong>## ミッション</strong></p><p>顧客と市場の最前線に立ち、</p><ul><li>顧客課題を発見する</li><li>顧客課題を解決する提案を行う</li><li>市場ニーズを構造化する</li><li>プロダクトへフィードバックする</li><li>新たな市場機会を創出する</li></ul><p>ことがミッションです。</p><p>顧客との対話から得たインサイトをもとに、「誰のどんな課題を解くべきか」「どのような価値を提供すべきか」を定義しながら、事業成長とプロダクト成長の両方を推進していただきます。</p><p><strong>## 業務内容</strong></p><p>ソリューション営業兼事業開発として、AI検索最適化領域での事業成長をリードしていただきます。具体的には以下のような業務を想定しています。</p><p><strong>■ソリューション営業・市場開拓</strong></p><ul><li>新規顧客への提案活動</li><li>顧客課題や業務プロセスのヒアリング</li><li>提案内容や営業資料の改善</li><li>新たな顧客セグメントの探索</li><li>販売パートナー・アライアンス開拓</li><li>顧客との対話を通じた市場機会の発見</li></ul><p><strong>■事業開発</strong></p><ul><li>新たなユースケースの探索</li><li>GTM戦略の企画・実行</li><li>ターゲット市場の選定</li><li>提供価値の設計</li><li>PMFに向けた仮説検証</li></ul><p><strong>■プロダクト企画・価値向上</strong></p><ul><li>顧客要望や課題の収集・分析</li><li>新機能や新サービスの企画</li><li>開発チームとの連携による改善推進</li><li>活用シナリオや提供価値の設計</li><li>活用事例・成功パターンの構築</li></ul><p><strong>## ポジションの魅力</strong></p><p><strong>■市場のスタンダードを創る挑戦ができる</strong><br>AI検索最適化は、生成AIの普及によって生まれた新たな市場です。まだ正解が確立されていない領域だからこそ、顧客と向き合いながら市場ニーズを捉え、新たなスタンダードを創っていく経験を積むことができます。</p><p><strong>■事業とプロダクトの両方に携われる</strong><br>一般的なSaaS企業では、営業・カスタマーサクセス・プロダクトマネージャーなどが分業されています。一方で本ポジションでは、顧客課題の発見からプロダクト企画まで一貫して関わることができます。顧客の声を起点に、事業とプロダクトの両方を成長させる経験を得ることができます。</p><p><strong>■将来的に事業責任者を目指せる</strong><br>本ポジションで培うのは、営業スキルだけではありません。市場開拓、顧客理解、プロダクト企画、事業推進といった経験を通じて、将来的にはプロダクト単位の事業責任者として活躍いただくことを期待しています。</p><p><strong>応募資格</strong></p><p><span class='tag tag-must'>【必須（MUST）】</span></p><ul><li>無形商材の法人営業経験　3年以上</li><li>サービス/プロダクト開発に関与したご経験</li></ul><p><span class='tag tag-want'>【歓迎（WANT）】</span></p><ul><li>SaaSプロダクトの営業経験</li><li>新規事業または新サービスの立ち上げ経験</li><li>プロダクト企画やサービス改善に携わった経験</li><li>顧客ヒアリングをもとにサービス改善や業務改善を推進した経験</li><li>Go To Market戦略の立案・実行経験</li><li>アライアンスやパートナー開拓の経験</li><li>マーケティング領域に関する知識または実務経験</li><li>事業計画やKPI設計に携わった経験</li></ul><p><strong>【求める人物像】</strong></p><ul><li>不確実性を楽しめるメンタリティを持ち、変化を歓迎する</li><li>クライアントの課題を深く理解し、事業成功に本気でコミットできる</li><li>チームで成果を出すマインドを持ち、組織を横断して協働できる</li><li>IT業界のトレンドやテクノロジーに関する基本的な知識を持っている</li><li>スタートアップやベンチャー特有のスピード感に適応できる</li></ul>
+        <div class="meta-pills"></div>
+      </div>
+    </div>
+  <div class="section-label">外部リンク</div>
+  <div class="links"><a class="lbtn" href="https://www.cinc-j.co.jp/about/" target="_blank">🏢 企業サイト</a></div>
+</div></div>
+</main>
+<footer>
+  <p>本資料はmorichが村岡哲志 様のためにご用意した個人情報を含む機密資料です。無断転用・転載はご遠慮ください。</p>
+  <p style="margin-top:6px;">© 株式会社morich</p>
+</footer>
+<script>
+  function toggleAcc(header) {
+    const body = header.nextElementSibling;
+    header.classList.toggle('open');
+    body.classList.toggle('open');
+  }
+  function toggleJob(header) {
+    const body = header.nextElementSibling;
+    header.classList.toggle('open');
+    body.classList.toggle('open');
+  }
+</script>
+</body>
+</html>
